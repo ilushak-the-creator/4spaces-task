@@ -66,25 +66,20 @@ class ShopImpl implements Shop {
 
     this.products.map((item) =>{
       if (item.name.includes(searchString)) {
-        if (temp.length <= 9)
-        temp.push(item);
+        if (temp.length <= 9) {
+          temp.push(item);
+          result.push(item.name);
+        }
       }
-    })
-
-    temp.map((item) => {
-      result.push(item.name);
     })
 
     temp.map((item1) => {
       temp.map((item2) => {
         if (item2.name.includes(item1.name) && temp.indexOf(item1) != temp.indexOf(item2)) {
-          // item1.name = item1.producer + ' - ' + item1.name;
           result[temp.indexOf(item1)] = item1.producer + ' - ' + item1.name;
         }
       })
     })
-
-
 
     return result;
   }
